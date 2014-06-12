@@ -27,8 +27,8 @@ WebFontConfig = {
 </script>
 <script type="text/javascript" src="fonts/webfont.js"></script>-->
 
-<!--<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700' rel='stylesheet' type='text/css'>-->
-<link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
+<!--<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700' rel='stylesheet' type='text/css'>
+<link href='fonts/fonts.css' rel='stylesheet' type='text/css'>-->
 
 <style type="text/css">
 /* miscelaneos
@@ -68,17 +68,31 @@ WebFontConfig = {
 	
 */
 
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(fonts/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'Cabin Sketch';
+  font-style: normal;
+  font-weight: 700;
+  src: local('CabinSketch Bold'), local('CabinSketch-Bold'), url(fonts/ki3SSN5HMOO0-IOLOj069Hl4twXkwp3_u9ZoePkT564.woff) format('woff');
+}
+
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: normal;
+  font-weight: 400;
+  src: local('EB Garamond'), local('EBGaramond'), url(fonts/kYZt1bJ8UsGAPRGnkXPeFbrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+}
+
 body {
-	/*background:url(img/bg_grad.jpg) 50% 0px no-repeat #333;
-	background:url(img/bg_figs.png) repeat top center #333;*/
 	background:url(img/bg_figs.png) repeat top center #FCF2D9;
 	font-family: 'Open Sans', sans-serif;
 }
-
-/*canvas {
-	z-index:101 !important;
-	font-family: 'Hand Of Sean', sans-serif;
-}*/
 
 ::selection {
 	background: #FED000; /* Safari */
@@ -331,7 +345,7 @@ body {
 }
 
 #wheel {
-	background:url(img/borde.png) no-repeat 0px 0px /*#333*/;
+	background:url(img/borde.png) no-repeat 0px -10px /*#333*/;
 	display:none;
 	
 	float:none;
@@ -513,7 +527,7 @@ body {
 	clear:both;
 	
 	/*width:260px;*/
-	margin:180px auto 0px auto;
+	margin:160px auto 0px auto;
 	
 	font-family: 'EB Garamond', serif;
 	font-size:20px;
@@ -557,8 +571,8 @@ body {
 	display:block;
 	
 	position:absolute;
-	top:500px;
-	left:-5px;
+	top:480px;
+	left:-20px;
 	
 	width:100px;
 	height:100px;
@@ -666,7 +680,7 @@ function comenzar() {
 		frames : 0,
 
 		centerX : 300,
-		centerY : 300,
+		centerY : 290,
 
 		spin : function() {
 
@@ -827,14 +841,12 @@ function comenzar() {
 			ctx.textAlign = "center";
 			ctx.textBaseline = "middle";
 			ctx.fillStyle = '#E10915';
-			/*ctx.font = "1.8em Cabin Sketch";
-			ctx.fillText(wheel.segments[i], centerX + size + 165, centerY);*/
-			if(wheel.segments[i] === "Porción pastel Hershey's" || wheel.segments[i] === "Gracias por participar") {
+			if(wheel.segments[i] === "Porción pastel Hershey's") {
 				ctx.font = "1.2em Cabin Sketch";
-				ctx.fillText(wheel.segments[i], centerX + size + 171, centerY);
+				ctx.fillText(wheel.segments[i], centerX + size + 170, centerY);
 			} else {
 				ctx.font = "1.6em Cabin Sketch";
-				ctx.fillText(wheel.segments[i], centerX + size + 191, centerY);
+				ctx.fillText(wheel.segments[i], centerX + size + 190, centerY);
 			}
 			
 			$("#premio").html(wheel.segments[i]);
@@ -880,9 +892,7 @@ function comenzar() {
 			ctx.translate(centerX, centerY);
 			ctx.rotate((lastAngle + angle) / 2);
 
-			ctx.fillStyle = '#000000';//ctx.fillStyle = '#ffffff';
-			//ctx.font = "1.4em Cabin Sketch";
-			//ctx.fillText(value.substr(0, 20), size / 2 + 28, 0);
+			ctx.fillStyle = '#000000';
 			if(value === "Porción pastel Hershey's" || value === "Gracias por participar") {
 				ctx.font = "1.1em Cabin Sketch";
 				ctx.fillText(value.substr(0, 27), size / 2 + 28, 0);
