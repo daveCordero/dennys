@@ -822,10 +822,11 @@ function comenzar() {
 			ctx.beginPath();
 
 			ctx.moveTo(centerX + size - 10, centerY);
-			ctx.lineTo(centerX + size + 35, centerY - 10);
-			ctx.lineTo(centerX + size + 35, centerY + 10);
+			ctx.lineTo(centerX + size + 55, centerY - 20);
+			ctx.lineTo(centerX + size + 325, centerY - 20);
+			ctx.lineTo(centerX + size + 325, centerY + 20);
+			ctx.lineTo(centerX + size + 55, centerY + 20);
 			ctx.lineJoin = "round";
-			ctx.fillStyle = 'yellow';
 			ctx.closePath();
 
 			ctx.stroke();
