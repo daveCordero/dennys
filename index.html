@@ -342,7 +342,7 @@ body {
 	/*width:900px;
 	height:639px;*/
 	width:900px;
-	height:600px;
+	height:580px;
 }
 
 #mensaje {
@@ -749,7 +749,7 @@ function comenzar() {
 
 			if ($.browser.msie) {
 				canvas = document.createElement('canvas');
-				$(canvas).attr('width', 900).attr('height', 600).attr('id', 'canvas').appendTo('.wheel');
+				$(canvas).attr('width', 900).attr('height', 580).attr('id', 'canvas').appendTo('.wheel');
 				canvas = G_vmlCanvasManager.initElement(canvas);
 			}
 
@@ -823,6 +823,7 @@ function comenzar() {
 			ctx.textBaseline = "middle";
 			ctx.fillStyle = '#E10915';
 			ctx.fillText('', centerX + size + 170, centerY);
+			
 			if(wheel.segments[i] === "Porción pastel Hershey's") {
 				ctx.font = "1.2em Cabin Sketch";
 				ctx.fillText(wheel.segments[i], centerX + size + 170, centerY);
@@ -830,6 +831,7 @@ function comenzar() {
 				ctx.font = "1.6em Cabin Sketch";
 				ctx.fillText(wheel.segments[i], centerX + size + 190, centerY);
 			}
+			ctx.save(); // The save ensures this works on Android devices
 			
 			$("#premio").html(wheel.segments[i]);
 			
@@ -948,7 +950,7 @@ function comenzar() {
 		segments.push( cbox.value );
 	});
 	
-	/*Random al vector de premios o  venues*/
+	/*Random al vector de premios o venues*/
 	revolverPremios(segments);
 	
 	wheel.segments = segments;
@@ -1014,18 +1016,6 @@ function inicio() {
 	//window.location.href=window.location.href;
 }
 
-function audioRuleta() {
-	var sound = document.createElement('audio');
-	sound.setAttribute('src', 'wheel.mp3');
-	sound.play();
-}
-
-function audioFinal() {
-	sound.setAttribute('src', 'maquina.mp3');
-	sound.load();
-	sound.play();
-}
-
 function resultado() {
 	
 	if( $("#premio").html() === "Porción pastel Hershey's") {
@@ -1062,36 +1052,25 @@ function resultado() {
 	$("#mensaje").fadeIn();
 	$("#wheel").fadeOut();
 	
-	//sonar_musicapremio();
-	/*sonido.setAttribute('src', 'file:///android_asset/maquina.mp3');*/
-	/*sonido.setAttribute('src', 'maquina.mp3');
-	var sonido = document.createElement('audio');
-	sonido.setAttribute('src', 'http://siteate.com/2014/canvas/maquina.mp3');
-	sonido.play();
-	
-	var sound = document.createElement('audio');
-	sound.setAttribute('src', 'http://siteate.com/2014/canvas/maquina.mp3');
-	sound.play();*/
-	
 }//resultado()
 
 </script>
 <!-- /dave -->
 
-<!---->
+<!--
 <script type="text/javascript">
 // load fonts before loading the game
 WebFontConfig = {
 	custom: {
-    	families: ['Cabin Sketch', 'Open Sans', 'EB Garamond'],
-        urls: ['fonts/fonts.css']
+		families: ['Cabin Sketch', 'Open Sans', 'EB Garamond'],
+		urls: ['fonts/fonts.css']
 	},
-    active: function() {
-    	myMain();
+	active: function() {
+		wheel.drawNeedle();//myMain();
 	}
 };
 </script>
-<script type="text/javascript" src="fonts/webfont.js"></script>
+<script type="text/javascript" src="fonts/webfont.js"></script>-->
 
 </head>
 <body>
@@ -1126,7 +1105,7 @@ WebFontConfig = {
 		
 	</div><!--/#columna-->
 	
-	<canvas id="canvas" width="900" height="600"></canvas>
+	<canvas id="canvas" width="900" height="580"></canvas>
 	
 </div><!--/#wheel-->
 	
