@@ -12,6 +12,7 @@
 <!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
 
 
+<!--
 <script type="text/javascript">
 // load fonts before loading the game
 WebFontConfig = {
@@ -24,7 +25,7 @@ WebFontConfig = {
 	}
 };
 </script>
-<script type="text/javascript" src="fonts/webfont.js"></script>
+<script type="text/javascript" src="fonts/webfont.js"></script>-->
 
 <!--<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700' rel='stylesheet' type='text/css'>-->
 <link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
@@ -713,7 +714,7 @@ function comenzar() {
 				wheel.angleDelta = 0;
 				
 				setTimeout(function() {
-					wheel.sound.setAttribute('src', 'maquina.mp3');
+					wheel.sound.setAttribute('src', 'http://siteate.com/2014/phonegap/maquina.mp3');//wheel.sound.setAttribute('src', 'maquina.mp3');
 					wheel.sound.load();
 					wheel.sound.play();
 					resultado();
@@ -744,7 +745,7 @@ function comenzar() {
 
 		initAudio : function() {
 			var sound = document.createElement('audio');
-			sound.setAttribute('src', 'wheel.mp3');
+			sound.setAttribute('src', 'http://siteate.com/2014/phonegap/wheel.mp3');
 			wheel.sound = sound;
 		},
 
