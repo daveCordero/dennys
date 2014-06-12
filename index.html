@@ -6,6 +6,10 @@
 <title>Denny's</title>
 <link href="reset.css" type="text/css" rel="stylesheet">
 
+<script type="text/javascript" src="lib/jquery/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery.tinysort.js"></script>
+<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+
 <!---->
 <script type="text/javascript">
 // load fonts before loading the game
@@ -20,10 +24,6 @@ WebFontConfig = {
 };
 </script>
 <script type="text/javascript" src="fonts/webfont.js"></script>
-
-<script type="text/javascript" src="lib/jquery/jquery-1.6.2.min.js"></script>
-<script type="text/javascript" src="lib/jquery/jquery.tinysort.js"></script>
-<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
 
 <style type="text/css">
 /* miscelaneos
@@ -63,7 +63,7 @@ WebFontConfig = {
 	
 */
 
-/**/
+/*
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -83,7 +83,7 @@ WebFontConfig = {
   font-style: normal;
   font-weight: 400;
   src: local('EB Garamond'), local('EBGaramond'), url(fonts/kYZt1bJ8UsGAPRGnkXPeFbrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
-}
+}*/
 
 body {
 	background:url(img/bg_figs.png) repeat top center #FCF2D9;
@@ -841,7 +841,7 @@ function comenzar() {
 			
 			if(wheel.segments[i] === "Porción pastel Hershey's") {
 				ctx.font = "1.4em Cabin Sketch";
-				ctx.fillText(wheel.segments[i], centerX + size + 170, centerY);
+				ctx.fillText(wheel.segments[i], centerX + size + 190, centerY);
 			} else {
 				ctx.font = "1.6em Cabin Sketch";
 				ctx.fillText(wheel.segments[i], centerX + size + 190, centerY);
