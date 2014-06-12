@@ -1,0 +1,1140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<!--<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7"/>-->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Denny's</title>
+<link href="reset.css" type="text/css" rel="stylesheet">
+
+
+<script type="text/javascript" src="lib/jquery/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="lib/jquery/jquery.tinysort.js"></script>
+<!--[if IE]><script type="text/javascript" src="excanvas.js"></script><![endif]-->
+
+
+<script type="text/javascript">
+// load fonts before loading the game
+WebFontConfig = {
+	custom: {
+    	families: ['Cabin Sketch', 'Open Sans', 'EB Garamond'],
+        urls: ['fonts/fonts.css']
+	},
+    active: function() {
+    	myMain();
+	}
+};
+</script>
+<script type="text/javascript" src="fonts/webfont.js"></script>
+
+<!--<link href='http://fonts.googleapis.com/css?family=Cabin+Sketch:700' rel='stylesheet' type='text/css'>-->
+<link href='fonts/fonts.css' rel='stylesheet' type='text/css'>
+
+<style type="text/css">
+/* miscelaneos
+
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	
+	-moz-box-shadow:     inset  0px 0px 50px rgba(113,0,48,1);
+	-webkit-box-shadow:  inset  0px 0px 50px rgba(113,0,48,1);
+	box-shadow:          inset  0px 0px 50px rgba(113,0,48,1);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1)";
+	
+	-moz-box-shadow:     0px 0px 50px rgba(0,0,0,0.5);
+	-webkit-box-shadow:  0px 0px 50px rgba(0,0,0,0.5);
+	box-shadow:          0px 0px 50px rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1)";
+	
+	-webkit-border-radius:20px;
+	-moz-border-radius:20px;
+	-khtml-border-radius:20px;
+	border-radius:20px;
+	
+	-webkit-transition: background-position .5s ease;
+	   -moz-transition: background-position .5s ease;
+	     -o-transition: background-position .5s ease;
+	        transition: background-position .5s ease;
+			
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity:0.9;
+	opacity:0.9;
+	
+*/
+
+body {
+	/*background:url(img/bg_grad.jpg) 50% 0px no-repeat #333;
+	background:url(img/bg_figs.png) repeat top center #333;*/
+	background:url(img/bg_figs.png) repeat top center #FCF2D9;
+	font-family: 'Open Sans', sans-serif;
+}
+
+/*canvas {
+	z-index:101 !important;
+	font-family: 'Hand Of Sean', sans-serif;
+}*/
+
+::selection {
+	background: #FED000; /* Safari */
+}
+::-moz-selection {
+	background: #FED000; /* Firefox */
+	/* colores preguntados
+	'#F32B36', '#F93490', '#8E45B7', '#2879C9', '#4DD2FF', '#25CA68', '#FADE41', '#F8952E' ],*/
+}
+
+#monto {
+	background-color:#222;
+	display:block;
+	float:none;
+	clear:both;
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:555px;
+	height:370px;
+	padding:40px 0px 20px 35px;
+	margin:-240px 0px 0px -295px;
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	-moz-box-shadow:     0px 0px 50px rgba(255,255,255,0.5);
+	-webkit-box-shadow:  0px 0px 50px rgba(255,255,255,0.5);
+	box-shadow:          0px 0px 50px rgba(255,255,255,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=1)";
+}
+#monto a {
+	/*background:#999;*/
+	display:block;
+	float:left;
+	width:150px;
+	height:120px;
+	margin:0px 35px 0px 0px;
+	
+	text-align:center;
+	text-decoration:none;
+	line-height:21px;
+	color:#FFF;
+	
+	-webkit-border-radius:8px;
+	-moz-border-radius:8px;
+	-khtml-border-radius:8px;
+	border-radius:8px;
+	
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	
+	-moz-box-shadow:     0px 0px 20px rgba(0,0,0,0.5);
+	-webkit-box-shadow:  0px 0px 20px rgba(0,0,0,0.5);
+	box-shadow:          0px 0px 20px rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=2,MakeShadow=true,ShadowOpacity=1)";
+}
+#monto a:hover {
+	/*background:#999;*/
+	
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+	filter: alpha(opacity=80);
+	-moz-opacity:0.8;
+	-khtml-opacity:0.8;
+	opacity:0.8;
+	
+	-moz-box-shadow:     0px 0px 20px rgba(0,0,0,1);
+	-webkit-box-shadow:  0px 0px 20px rgba(0,0,0,1);
+	box-shadow:          0px 0px 20px rgba(0,0,0,1);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=2,MakeShadow=true,ShadowOpacity=9);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=2,MakeShadow=true,ShadowOpacity=9)";
+}
+
+#titleSeleccion {
+	display:block;
+	float:none;
+	clear:both;
+	margin:0px auto 40px auto;
+	
+	font-family: 'Open Sans', sans-serif;
+	text-align:center;
+	font-size:36px;
+	color:#FFF;
+}
+
+#titleOpciones {
+	display:block;
+	float:none;
+	clear:both;
+	margin:0px;
+	
+	text-align:center;
+	font-size:17px;
+	color:#333;
+}
+
+#regresar {
+	/*background:#E10915;*/
+	background:#F32B36;
+	display:block;
+	float:left;
+	/*clear:both;*/
+	width:150px;
+	padding:12px 0px 12px 0px;
+	margin:20px 0px 0px 100px;
+	
+	text-align:center;
+	text-decoration:none;
+	color:#FFF;
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	
+	-moz-box-shadow:     0px 0px 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow:  0px 0px 10px rgba(0,0,0,0.5);
+	box-shadow:          0px 0px 10px rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=1,MakeShadow=true,ShadowOpacity=1)";
+}
+#regresar:hover {
+	background:#25CA68;
+}
+
+#comenzar {
+	background:#F32B36;
+	display:block;
+	float:none;
+	clear:both;
+	width:150px;
+	padding:12px 0px 12px 0px;
+	margin:0px auto;
+	
+	text-align:center;
+	text-decoration:none;
+	color:#FFF;
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	
+	-moz-box-shadow:     0px 0px 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow:  0px 0px 10px rgba(0,0,0,0.5);
+	box-shadow:          0px 0px 10px rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=1,MakeShadow=true,ShadowOpacity=1)";
+}
+#comenzar:hover {
+	background:#25CA68;
+}
+
+#cargarRul {
+	background:#F32B36;/*background:#FEA201;*/
+	display:block;
+	
+	/*float:left;
+	margin:20px 0px 0px 20px;*/
+	
+	float:none;
+	clear:both;
+	margin:15px auto 0px auto;
+	
+	width:150px;
+	padding:12px 0px 12px 0px;
+	
+	text-align:center;
+	text-decoration:none;
+	color:#FFF;
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	-webkit-transition: all 100ms ease-in-out;
+	-moz-transition: all 100ms ease-in-out;
+	-ms-transition: all 100ms ease-in-out;
+	-o-transition: all 100ms ease-in-out;
+	
+	-moz-box-shadow:     0px 0px 10px rgba(0,0,0,0.5);
+	-webkit-box-shadow:  0px 0px 10px rgba(0,0,0,0.5);
+	box-shadow:          0px 0px 10px rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=1,MakeShadow=true,ShadowOpacity=1);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=1,MakeShadow=true,ShadowOpacity=1)";
+}
+#cargarRul:hover {
+	background:#25CA68;
+}
+
+#opciones {
+	background-color:#F9DEB6 /*#222*/;
+	display:none;
+	float:none;
+	clear:both;
+	position:absolute;
+	top:50%;
+	left:50%;
+	width:555px;
+	height:370px;
+	padding:20px 0px 20px 25px;
+	margin:-210px 0px 0px -290px;
+	
+	color:#333 !important;
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	-moz-box-shadow:     0px 0px 30px rgba(0,0,0,0.3);
+	-webkit-box-shadow:  0px 0px 30px rgba(0,0,0,0.3);
+	box-shadow:          0px 0px 30px rgba(0,0,0,0.3);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=3);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=3)";
+}
+
+#venues ul {
+	/*width:93%;*/
+	display:block;
+	float:right;
+	width:240px;
+	margin-right:20px;
+}
+#venues li {
+	border-bottom:#FFF solid 1px;
+	display:block;
+	float:none;
+	clear:both;
+	padding:7px 5px 7px 5px;
+	/*color:#FFF;*/
+}
+#venues li:hover {
+	background:#FFF;
+}
+
+#wheel {
+	background:url(img/borde.png) no-repeat 0px 0px /*#333*/;
+	display:none;
+	
+	float:none;
+	clear:both;
+	position:relative;
+	margin:5px auto 0px auto;
+	
+	/*position:absolute;
+	top:50%;
+	left:50%;
+	margin:-300px 0px -450px 0px;*/
+	
+	/*width:900px;
+	height:639px;*/
+	width:900px;
+	height:600px;
+}
+
+#mensaje {
+	background:#F9DEB6 /*#000*/;
+	display:none;
+	float:none;
+	clear:both;
+	
+	position:absolute;
+	top:50%;
+	left:50%;
+	
+	width:360px;
+	height:255px;
+	
+	padding:30px;
+	margin:-140px 0px 0px -200px;
+	
+	color:#333;
+	text-align:center;
+	font-family: 'Open Sans', sans-serif;
+	
+	-webkit-border-radius:12px;
+	-moz-border-radius:12px;
+	-khtml-border-radius:12px;
+	border-radius:12px;
+	
+	/*-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";
+	filter: alpha(opacity=90);
+	-moz-opacity:0.9;
+	-khtml-opacity:0.9;
+	opacity:0.9;*/
+	
+	-moz-box-shadow:     0px 0px 30px rgba(0,0,0,0.3);
+	-webkit-box-shadow:  0px 0px 30px rgba(0,0,0,0.3);
+	box-shadow:          0px 0px 30px rgba(0,0,0,0.3);
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=3);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=3,MakeShadow=true,ShadowOpacity=3)";
+}
+
+#premio {
+	display:block;
+	float:none;
+	clear:both;
+	
+	font-family: 'Open Sans', sans-serif;
+	/*font-family: 'Cabin Sketch', cursive;
+	font-family: 'Cabin Sketch';*/
+	font-weight:bold;
+	font-size:24px;
+	color:#FEA201;
+	
+	margin:20px 0px 20px 0px;
+}
+
+.txPeq {
+	font-size:11px;
+}
+
+.finCols {
+	float:none;
+	clear:both;
+}
+
+#columna {
+	/*background:#666;*/
+	display:block;
+	
+	position:absolute;
+	top:0px;
+	right:0px;
+	
+	/*z-index:102 !important;*/
+	
+	width:290px;
+	height:auto;
+	
+	padding:0px 0px 0px 0px;
+	
+	/*font-family: 'EB Garamond', serif;*/
+}
+
+#logoDennys {
+	background:url(img/logo_272x136.png) no-repeat top center;
+	display:block;
+	float:none;
+	clear:both;
+	margin:0px auto 20px auto;
+	
+	width:272px;
+	height:136px;
+}
+
+#logoDennysFin {
+	background:url(img/logo_272x136.png) no-repeat top center;
+	display:block;
+	
+	position:absolute;
+	top:-70px;
+	left:50%;
+	margin:0px 0px 0px -136px;
+	
+	width:272px;
+	height:136px;
+}
+
+#opcionesLogoDennys {
+	background:url(img/logo_272x136.png) no-repeat top center;
+	display:block;
+	
+	float:none;
+	clear:both;
+	margin:0px auto;
+	
+	/*position:absolute;
+	top:-80px;
+	left:50%;
+	margin:0px 0px 0px -136px;*/
+	
+	width:272px;
+	height:136px;
+}
+
+#titulo {
+	font-family: 'Cabin Sketch', cursive;
+	/*font-family: 'Cabin Sketch';*/
+	font-size:30px;
+	/*font-family: 'Luckiest Guy', cursive;
+	font-size:26px;*/
+	
+	font-weight:700;
+	color:#333;/*color:#E10915;*/
+	text-align:center;
+	
+	margin:0px 0px 10px 0px;
+}
+
+#columL {
+	/*background:#CCC;*/
+	display:block;
+	float:left;
+	
+	width:275px;
+	margin:50px 0px 0px 0px;
+}
+
+#opcionesTitulo {
+	/*background:#CCC;
+	font-family: 'Cabin Sketch', cursive;*/
+	font-family: 'Cabin Sketch';
+	font-size:30px;
+	
+	font-weight:700;
+	color:#E10915;
+	text-align:center;
+	
+	margin:10px 0px 10px 0px;
+}
+
+.texto {
+	display:block;
+	float:none;
+	clear:both;
+	
+	/*width:260px;*/
+	margin:200px auto 0px auto;
+	
+	font-family: 'EB Garamond', serif;
+	font-size:20px;
+	color:#000;/*color:#FFF;*/
+	text-align:center;
+	line-height:22px;
+}
+
+.muchaSuerte {
+	display:block;
+	float:none;
+	clear:both;
+	margin-top:15px;
+	
+	/*text-shadow:0px 2px 2px rgba(0, 0, 0, 0.7);*/
+	font-family: 'Cabin Sketch', cursive;
+	/*font-family: 'Cabin Sketch';*/
+	font-size:21px;
+	color:#333;/*color:#FEA201;*/
+}
+#restricciones {
+	font-family: 'Open Sans', sans-serif;
+	font-size:12px;
+	line-height:12px;
+	color:#000;
+	
+	margin-top:15px;
+}
+#logoCoca {
+	background:url(img/logoCoca.png) no-repeat 0px 0px;
+	display:none;
+	float:none;
+	clear:both;
+	
+	width:220px;
+	height:70px;
+	margin:10px auto 10px auto;
+}
+#botonCoca {
+	background:url(img/botonCoca.png) no-repeat 0px 0px ;/*#999*/
+	display:block;
+	
+	position:absolute;
+	top:500px;
+	left:-5px;
+	
+	width:100px;
+	height:100px;
+	margin:0px;
+}
+</style>
+
+
+<script type="text/javascript">
+// Helpers
+shuffle = function(o) {
+	for ( var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x)
+		;
+	return o;
+};
+
+String.prototype.hashCode = function(){
+	// See http://www.cse.yorku.ca/~oz/hash.html
+	var hash = 5381;
+	for (i = 0; i < this.length; i++) {
+		char = this.charCodeAt(i);
+		hash = ((hash<<5)+hash) + char;
+		hash = hash & hash; // Convert to 32bit integer
+	}
+	return hash;
+}
+
+Number.prototype.mod = function(n) {
+	return ((this%n)+n)%n;
+}
+</script>
+
+<script type="text/javascript">
+function comenzar() {
+	//alert('comenzar !!');
+	
+	$(function() {
+
+		var venueContainer = $('#venues ul');
+		$.each(venues, function(key, item) {
+			venueContainer.append(
+		        $(document.createElement("li"))
+		        .append(
+	                $(document.createElement("input")).attr({
+                         id:    'venue-' + key
+                        ,name:  item
+                        ,value: item
+                        ,type:  'checkbox'
+                        ,checked:true
+	                })
+	                .change( function() {
+	                	var cbox = $(this)[0];
+	                	var segments = wheel.segments;
+	                	var i = segments.indexOf(cbox.value);
+
+	                	if (cbox.checked && i == -1) {
+	                		segments.push(cbox.value);
+
+	                	} else if ( !cbox.checked && i != -1 ) {
+	                		segments.splice(i, 1);
+	                	}
+
+	                	segments.sort();
+	                	wheel.update();
+	                } )
+
+		        ).append(
+	                $(document.createElement('label')).attr({
+	                    'for':  'venue-' + key
+	                })
+	                .text( item )
+		        )
+		    )
+		});
+
+		$('#venues ul>li').tsort("input", {attr: "value"});
+	});
+	
+	// WHEEL!
+	var wheel = {
+
+		timerHandle : 0,
+		timerDelay : 33,
+
+		angleCurrent : 0,
+		angleDelta : 0,
+
+		size : 270,
+
+		canvasContext : null,
+
+		colors : [ '#FFF100', '#E5E400', '#C4D60B', '#898E31', '#CB001F', '#DF4321', '#EA8D12', '#FBDF00' ],//colores caro
+
+		segments : [],
+
+		seg_colors : [], // Cache of segments to colors
+		
+		maxSpeed : Math.PI / 16,
+
+		upTime : 1000, // How long to spin up for (in ms)
+		downTime : 17000, // How long to slow down for (in ms)
+
+		spinStart : 0,
+
+		frames : 0,
+
+		centerX : 300,
+		centerY : 300,
+
+		spin : function() {
+
+			// Start the wheel only if it's not already spinning
+			if (wheel.timerHandle == 0) {
+				wheel.spinStart = new Date().getTime();
+				wheel.maxSpeed = Math.PI / (16 + Math.random()); // Randomly vary how hard the spin is
+				wheel.frames = 0;
+				wheel.sound.play();//audioRuleta();
+
+				wheel.timerHandle = setInterval(wheel.onTimerTick, wheel.timerDelay);
+			}
+		},
+
+		onTimerTick : function() {
+
+			wheel.frames++;
+
+			wheel.draw();
+
+			var duration = (new Date().getTime() - wheel.spinStart);
+			var progress = 0;
+			var finished = false;
+
+			if (duration < wheel.upTime) {
+				progress = duration / wheel.upTime;
+				wheel.angleDelta = wheel.maxSpeed
+						* Math.sin(progress * Math.PI / 2);
+			} else {
+				progress = duration / wheel.downTime;
+				wheel.angleDelta = wheel.maxSpeed
+						* Math.sin(progress * Math.PI / 2 + Math.PI / 2);
+				if (progress >= 1)
+					finished = true;
+			}
+
+			wheel.angleCurrent += wheel.angleDelta;
+			while (wheel.angleCurrent >= Math.PI * 2)
+				// Keep the angle in a reasonable range
+				wheel.angleCurrent -= Math.PI * 2;
+
+			if (finished) {
+				clearInterval(wheel.timerHandle);
+				wheel.timerHandle = 0;
+				wheel.angleDelta = 0;
+				
+				setTimeout(function() {
+					wheel.sound.setAttribute('src', 'maquina.mp3');
+					wheel.sound.load();
+					wheel.sound.play();
+					resultado();
+				}, 2000);
+			}
+
+			/*
+			// Display RPM
+			var rpm = (wheel.angleDelta * (1000 / wheel.timerDelay) * 60) / (Math.PI * 2);
+			$("#counter").html( Math.round(rpm) + " RPM" );
+			*/
+		},
+
+		init : function(optionList) {
+			try {
+				//wheel.initWheel();//omite shuffle colors
+				wheel.initAudio();
+				wheel.initCanvas();
+				wheel.draw();
+
+				$.extend(wheel, optionList);
+
+			} catch (exceptionData) {
+				alert('Wheel is not loaded ' + exceptionData);
+			}
+
+		},
+
+		initAudio : function() {
+			var sound = document.createElement('audio');
+			sound.setAttribute('src', 'wheel.mp3');
+			wheel.sound = sound;
+		},
+
+		initCanvas : function() {
+			var canvas = $('#wheel #canvas').get(0);
+
+			if ($.browser.msie) {
+				canvas = document.createElement('canvas');
+				$(canvas).attr('width', 900).attr('height', 600).attr('id', 'canvas').appendTo('.wheel');
+				canvas = G_vmlCanvasManager.initElement(canvas);
+			}
+
+			canvas.addEventListener("click", wheel.spin, false);
+			wheel.canvasContext = canvas.getContext("2d");
+		},
+
+		initWheel : function() {
+			shuffle(wheel.colors);
+		},
+
+		// Called when segments have changed
+		update : function() {
+			// Ensure we start mid way on a item
+			//var r = Math.floor(Math.random() * wheel.segments.length);
+			var r = 0;
+			wheel.angleCurrent = ((r + 0.5) / wheel.segments.length) * Math.PI * 2;
+
+			var segments = wheel.segments;
+			var len      = segments.length;
+			var colors   = wheel.colors;
+			var colorLen = colors.length;
+
+			// Generate a color cache (so we have consistant coloring)
+			var seg_color = new Array();
+			for (var i = 0; i < len; i++)
+				seg_color.push( colors[i] );
+				
+			wheel.seg_color = seg_color;
+
+			wheel.draw();
+		},
+
+		draw : function() {
+			wheel.clear();
+			wheel.drawWheel();
+			wheel.drawNeedle();
+		},
+
+		clear : function() {
+			var ctx = wheel.canvasContext;
+			ctx.clearRect(0, 0, 1000, 800);
+		},
+
+		drawNeedle : function() {
+			var ctx = wheel.canvasContext;
+			var centerX = wheel.centerX;
+			var centerY = wheel.centerY;
+			var size = wheel.size;
+
+			ctx.lineWidth = 5;
+			ctx.strokeStyle = '#333333';
+			ctx.fillStyle = '#FFFFFF';
+
+			ctx.beginPath();
+
+			ctx.moveTo(centerX + size - 10, centerY);
+			ctx.lineTo(centerX + size + 35, centerY - 10);
+			ctx.lineTo(centerX + size + 35, centerY + 10);
+			ctx.lineJoin = "round";
+			ctx.closePath();
+
+			ctx.stroke();
+			ctx.fill();
+
+			// Which segment is being pointed to?
+			var i = wheel.segments.length - Math.floor((wheel.angleCurrent / (Math.PI * 2))	* wheel.segments.length) - 1;
+
+			// Now draw the winning name
+			ctx.textAlign = "center";
+			ctx.textBaseline = "middle";
+			ctx.fillStyle = '#E10915';
+			/*ctx.font = "1.8em Cabin Sketch";
+			ctx.fillText(wheel.segments[i], centerX + size + 165, centerY);*/
+			if(wheel.segments[i] === "Porción pastel Hershey's" || wheel.segments[i] === "Gracias por participar") {
+				ctx.font = "1.2em Cabin Sketch";
+				ctx.fillText(wheel.segments[i], centerX + size + 171, centerY);
+			} else {
+				ctx.font = "1.6em Cabin Sketch";
+				ctx.fillText(wheel.segments[i], centerX + size + 191, centerY);
+			}
+			
+			$("#premio").html(wheel.segments[i]);
+			
+		},
+
+		drawSegment : function(key, lastAngle, angle) {
+			var ctx = wheel.canvasContext;
+			var centerX = wheel.centerX;
+			var centerY = wheel.centerY;
+			var size = wheel.size;
+
+			var segments = wheel.segments;
+			var len = wheel.segments.length;
+			var colors = wheel.seg_color;
+
+			var value = segments[key];
+			
+			ctx.save();
+			ctx.beginPath();
+
+			// Start in the centre
+			ctx.moveTo(centerX, centerY);
+			ctx.arc(centerX, centerY, size, lastAngle, angle, false); // Draw a arc around the edge
+			ctx.lineTo(centerX, centerY); // Now draw a line back to the centre
+
+			// Clip anything that follows to this area
+			//ctx.clip(); // It would be best to clip, but we can double performance without it
+			ctx.closePath();
+			
+			ctx.shadowBlur=15;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.4)';//ctx.shadowColor="#000000";
+			
+			ctx.lineWidth = 2;
+			ctx.strokeStyle = '#222222';
+			
+			ctx.fillStyle = colors[key];//ctx.fillStyle = gradient1;
+			ctx.fill();
+			ctx.stroke();
+
+			// Now draw the text
+			ctx.save(); // The save ensures this works on Android devices
+			ctx.translate(centerX, centerY);
+			ctx.rotate((lastAngle + angle) / 2);
+
+			ctx.fillStyle = '#000000';//ctx.fillStyle = '#ffffff';
+			//ctx.font = "1.4em Cabin Sketch";
+			//ctx.fillText(value.substr(0, 20), size / 2 + 28, 0);
+			if(value === "Porción pastel Hershey's" || value === "Gracias por participar") {
+				ctx.font = "1.1em Cabin Sketch";
+				ctx.fillText(value.substr(0, 27), size / 2 + 28, 0);
+			} else {
+				ctx.font = "1.4em Cabin Sketch";
+				ctx.fillText(value.substr(0, 20), size / 2 + 28, 0);
+			}
+			
+			ctx.restore();
+
+			ctx.restore();
+		},
+
+		drawWheel : function() {
+			var ctx = wheel.canvasContext;
+
+			var angleCurrent = wheel.angleCurrent;
+			var lastAngle    = angleCurrent;
+
+			var segments  = wheel.segments;
+			var len       = wheel.segments.length;
+			var colors    = wheel.colors;
+			var colorsLen = wheel.colors.length;
+
+			var centerX = wheel.centerX;
+			var centerY = wheel.centerY;
+			var size    = wheel.size;
+
+			var PI2 = Math.PI * 2;
+
+			ctx.lineWidth    = 2;
+			ctx.strokeStyle  = '#999999';
+			ctx.textBaseline = "middle";
+			ctx.textAlign    = "center";
+			//ctx.font = "1.3em Open Sans";//ctx.font = "1.4em Arial";
+
+			for (var i = 1; i <= len; i++) {
+				var angle = PI2 * (i / len) + angleCurrent;
+				wheel.drawSegment(i - 1, lastAngle, angle);
+				lastAngle = angle;
+			}
+			// Draw a center circle
+			ctx.beginPath();
+			ctx.arc(centerX, centerY, 60, 0, PI2, false);
+			ctx.closePath();
+			var gradButton = ctx.createRadialGradient(300,300,10,300,300,80);
+			gradButton.addColorStop("0","#FFFFFF");
+			gradButton.addColorStop("1","#D0D0D0");
+			ctx.fillStyle = gradButton;
+			ctx.strokeStyle = '#333333';//ctx.strokeStyle = '#B0B0B0';
+			/*ctx.shadowBlur=10;
+			ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';*/
+			
+			ctx.fill();
+			ctx.stroke();
+			
+			// Draw the spin text
+			ctx.save();
+			//ctx.textAlign = "center";//ctx.textBaseline = "middle";
+			ctx.fillStyle = '#000000';
+			ctx.font = "2.4em Cabin Sketch";//ctx.font = "2.4em Luckiest Guy";
+			ctx.shadowBlur=0;
+			ctx.fillText('GIRAR', centerX, centerY);//ctx.fillText('GIRAR', centerX + size - 290, centerY + 10);
+		},
+	}
+	
+	wheel.init();
+	var segments = new Array();
+	var img = new Image();
+	$.each($('#venues input:checked'), function(key, cbox) {
+		segments.push( cbox.value );
+	});
+	
+	/*Random al vector de premios o  venues*/
+	revolverPremios(segments);
+	
+	wheel.segments = segments;
+	wheel.update();
+	
+	$("#opciones").fadeIn();
+	
+}//comenzar()
+
+function revolverPremios ( myArray ) {
+  var i = myArray.length;
+  if ( i == 0 ) return false;
+  while ( --i ) {
+     var j = Math.floor( Math.random() * ( i + 1 ) );
+     var tempi = myArray[i];
+     var tempj = myArray[j];
+     myArray[i] = tempj;
+     myArray[j] = tempi;
+   }
+}
+
+window.onload = function() {
+	// Hide the address bar (for mobile devices)!
+	setTimeout(function() {
+		window.scrollTo(0, 1);
+	}, 0);
+	
+	opcion1();
+	
+	setTimeout(function() {
+		$("#opciones").fadeIn();
+	}, 1000);
+}
+</script>
+
+<!-- dave -->
+<script type="text/javascript">
+function opcion1() {
+	$("#monto").fadeOut();
+	venues = {
+		"116208"   : "Certificado ¢5 mil",
+		"66271"    : "Cobb Salad",
+		"414570"   : "Premio Coca Cola 1",
+		"392360"   : "Porción pastel Hershey's",
+		"2210952"  : "French Toast Slam",
+		"207306"   : "10% descuento",
+		"41457"    : "Premio Coca Cola 2",
+		"101161"   : "Gracias por participar"
+	}
+	comenzar();
+}//opcion1()
+
+function mostrarRuleta() {
+	setTimeout(function() {
+		$("#opciones").fadeOut(100);
+		$("#wheel").fadeIn(400);
+	}, 500);
+}
+
+function inicio() {
+	window.location.reload();
+	//history.go(0);
+	//window.location.href=window.location.href;
+}
+
+function audioRuleta() {
+	var sound = document.createElement('audio');
+	sound.setAttribute('src', 'wheel.mp3');
+	sound.play();
+}
+
+function audioFinal() {
+	sound.setAttribute('src', 'maquina.mp3');
+	sound.load();
+	sound.play();
+}
+
+function resultado() {
+	
+	if( $("#premio").html() === "Porción pastel Hershey's") {
+		$("#premio").html("1 porción de pastel Hershey's");
+	} else 
+	if( $("#premio").html() === '10% descuento') {
+		$("#premio").html('10% de descuento en su cuenta');
+	} else 
+	if( $("#premio").html() === 'Certificado ¢5 mil') {
+		$("#premio").css({ 'font-size':'18px' });
+		$("#premio").html('Certificado de regalo por ¢5000 colones');
+	} else 
+	if( $("#premio").html() === 'Gracias por participar') {
+		$("#titleSeleccion").html('');
+		$("#titleSeleccion").html('Lo sentimos');
+		$("#suPremio").hide();
+		$("#premio").html('Mejor suerte la próxima vez.');
+		$("#mensaje").css({ 'height':'245px' });
+		$("#mensaje").css({ 'margin-top':'-143px' });
+	} else 
+	if( $("#premio").html() === 'Premio Coca Cola 1') {
+		//logo Coca Cola
+		$("#logoCoca").css({ 'display':'block' });
+		$("#mensaje").css({ 'height':'345px' });
+		$("#mensaje").css({ 'margin-top':'-175px' });
+	} else 
+	if( $("#premio").html() === 'Premio Coca Cola 2') {
+		//logo Coca Cola
+		$("#logoCoca").css({ 'display':'block' });
+		$("#mensaje").css({ 'height':'345px' });
+		$("#mensaje").css({ 'margin-top':'-175px' });
+	}
+	
+	$("#mensaje").fadeIn();
+	$("#wheel").fadeOut();
+	
+	//sonar_musicapremio();
+	/*sonido.setAttribute('src', 'file:///android_asset/maquina.mp3');*/
+	/*sonido.setAttribute('src', 'maquina.mp3');
+	var sonido = document.createElement('audio');
+	sonido.setAttribute('src', 'http://siteate.com/2014/canvas/maquina.mp3');
+	sonido.play();
+	
+	var sound = document.createElement('audio');
+	sound.setAttribute('src', 'http://siteate.com/2014/canvas/maquina.mp3');
+	sound.play();*/
+	
+}//resultado()
+
+</script>
+<!-- /dave -->
+
+</head>
+<body>
+
+<div id="opciones">
+	<div id="columL">
+        <div id="opcionesLogoDennys"></div>
+        <div id="opcionesTitulo">Ruleta Mundialista</div>
+        <div id="titleOpciones">Seleccione las opciones de juego</div>
+    </div><!--/#columL-->
+	<div id="venues"><ul/></div>
+	<div class="finCols"></div>
+	<a href="javascript:void();" onclick="mostrarRuleta();" id="cargarRul">Cargar Ruleta</a>
+</div><!--/#opciones-->
+
+<div id="wheel">
+	
+    <div id="botonCoca"></div>
+	
+	<div id="columna">
+		
+		<div id="logoDennys"></div>
+		<div id="titulo">Ruleta Mundialista</div>
+		
+		<div class="texto">
+			Siga visitándonos durante toda<br>La Copa de Fútbol Brasil 2014 y tendrá nuevas posibilidades de girar nuestra ruleta. Lo esperamos.
+			<span class="muchaSuerte">¡Mucha suerte con su tiro!</span>
+            <div id="restricciones">
+            	Los premios no son reembolsables, no pueden intercambiarse, transferirse o usarse con otras promociones. No se dará doble oportunidad o generarán otros premios por cupones que no sean los de la ruleta.
+            </div><!--/#restricciones-->
+		</div><!--/.texto-->
+		
+	</div><!--/#columna-->
+	
+	<canvas id="canvas" width="900" height="600"></canvas>
+	
+</div><!--/#wheel-->
+	
+<div id="mensaje">
+	<div id="logoDennysFin"></div>
+	<div id="titleSeleccion" style="margin-top:60px; margin-bottom:20px; font-family: 'Cabin Sketch', cursive; color:#333;">¡Felicidades!</div>
+	<div id="suPremio">Su premio es:</div>
+    <div id="logoCoca"></div>
+	<span id="premio"></span>
+	<a href="javascript:void(0);" onclick="inicio();" id="comenzar">Inicio</a>
+	<div class="finCols"></div>
+	<br>
+	<div class="txPeq">Gracias por preferir Denny's</div>
+</div><!--/#mensaje-->
+
+</body>
+</html>
