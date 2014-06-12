@@ -49,6 +49,7 @@
 	
 */
 
+/*
 @font-face {
   font-family: 'Open Sans';
   font-style: normal;
@@ -68,7 +69,7 @@
   font-style: normal;
   font-weight: 400;
   src: local('EB Garamond'), local('EBGaramond'), url(fonts/kYZt1bJ8UsGAPRGnkXPeFbrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
-}
+}*/
 
 body {
 	background:url(img/bg_figs.png) repeat top center #FCF2D9;
@@ -332,7 +333,7 @@ body {
 	float:none;
 	clear:both;
 	position:relative;
-	margin:5px auto 0px auto;
+	margin:0px auto 0px auto;
 	
 	/*position:absolute;
 	top:50%;
@@ -552,8 +553,8 @@ body {
 	display:block;
 	
 	position:absolute;
-	top:480px;
-	left:-20px;
+	top:465px;
+	left:-25px;
 	
 	width:100px;
 	height:100px;
@@ -831,7 +832,6 @@ function comenzar() {
 				ctx.font = "1.6em Cabin Sketch";
 				ctx.fillText(wheel.segments[i], centerX + size + 190, centerY);
 			}
-			ctx.save(); // The save ensures this works on Android devices
 			
 			$("#premio").html(wheel.segments[i]);
 			
@@ -1057,7 +1057,7 @@ function resultado() {
 </script>
 <!-- /dave -->
 
-<!--
+<!---->
 <script type="text/javascript">
 // load fonts before loading the game
 WebFontConfig = {
@@ -1066,11 +1066,11 @@ WebFontConfig = {
 		urls: ['fonts/fonts.css']
 	},
 	active: function() {
-		wheel.drawNeedle();//myMain();
+		myMain();//wheel.drawNeedle();
 	}
 };
 </script>
-<script type="text/javascript" src="fonts/webfont.js"></script>-->
+<script type="text/javascript" src="fonts/webfont.js"></script>
 
 </head>
 <body>
