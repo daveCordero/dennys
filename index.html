@@ -685,7 +685,7 @@ function comenzar() {
 				wheel.spinStart = new Date().getTime();
 				wheel.maxSpeed = Math.PI / (16 + Math.random()); // Randomly vary how hard the spin is
 				wheel.frames = 0;
-				wheel.sound.play();//audioRuleta();
+				wheel.sound.play();
 
 				wheel.timerHandle = setInterval(wheel.onTimerTick, wheel.timerDelay);
 			}
@@ -724,7 +724,7 @@ function comenzar() {
 				wheel.angleDelta = 0;
 				
 				setTimeout(function() {
-					wheel.sound.setAttribute('src', 'http://siteate.com/2014/phonegap/maquina.mp3');//wheel.sound.setAttribute('src', 'maquina.mp3');
+					wheel.sound.setAttribute('src', 'maquina.mp3');
 					wheel.sound.load();
 					wheel.sound.play();
 					resultado();
@@ -755,8 +755,10 @@ function comenzar() {
 
 		initAudio : function() {
 			var sound = document.createElement('audio');
-			sound.setAttribute('src', 'http://siteate.com/2014/phonegap/wheel.mp3');
+			sound.setAttribute('src', 'wheel.mp3');
 			wheel.sound = sound;
+			wheel.sound.load();
+			//
 		},
 
 		initCanvas : function() {
